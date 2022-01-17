@@ -19,6 +19,7 @@ dependencies:
   - certifi=2021.10.8=py39hf3d152e_1
   - cffi=1.14.6=py39h400218f_0
   - charset-normalizer=2.0.4=pyhd3eb1b0_0
+  - click=8.0.3=py39hf3d152e_1
   - cryptography=36.0.0=py39h9ce1e76_0
   - cycler=0.11.0=pyhd8ed1ab_0
   - debugpy=1.5.1=py39h295c915_0
@@ -102,6 +103,7 @@ dependencies:
   - pysocks=1.7.1=py39h06a4308_0
   - python=3.9.7=h12debd9_1
   - python-dateutil=2.8.2=pyhd3eb1b0_0
+  - python-dotenv=0.19.2=pyhd8ed1ab_0
   - python_abi=3.9=2_cp39
   - pytz=2021.3=pyhd3eb1b0_0
   - pyzmq=22.3.0=py39h295c915_2
