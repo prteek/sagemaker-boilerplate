@@ -1,0 +1,16 @@
+name: sagemaker-boilerplate
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - scikit-learn
+  - pandas
+  - fastparquet
+  - matplotlib
+  - python-dotenv
+  - seaborn
+  - pip:
+    - boto3
+    - sagemaker
+    - sagemaker-experiments
+prefix: /home/prateek/miniconda3/envs/sagemaker-boilerplate
