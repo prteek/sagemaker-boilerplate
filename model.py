@@ -13,7 +13,7 @@ if __name__ == '__main__':
     
     parser.add_argument("--model-dir", default="/opt/ml/")
     parser.add_argument("--training", default="/opt/ml/input/data/training")
-    parser.add_argument("--alpha", default=0.0001)
+    parser.add_argument("--alpha", type=float, default=0.0001)
     
     args = parser.parse_args()
         
