@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from sagemaker.estimator import Estimator
+from sagemaker.sklearn import SKLearn
 from smexperiments.experiment import Experiment
 from smexperiments.trial import Trial
 from smexperiments.tracker import Tracker
@@ -28,29 +28,34 @@ hyperparameters = {'alpha': 0.1}
 
 metrics = [{'Name': 'accuracy', 'Regex': "accuracy=([0-9\\.]+);"}]
 
-estimator = Estimator(image_uri=image_uri,
-                      role=role,
-                      instance_type='ml.m5.large',
-                      instance_count=1,
-                      output_path=output_path,
-                      use_spot_instances=True,
-                      base_job_name=job_name,
-                      metric_definitions=metrics,
-                      max_wait=100000,
-                      hyperparameters=hyperparameters,
-                     )
+estimator = SKLearn(entry_point='model.py',
+                    image_uri=image_uri,
+                    role=role,
+                    instance_type='ml.m5.large',
+                    instance_count=1,
+                    output_path=output_path,
+                    use_spot_instances=True,
+                    base_job_name=job_name,
+                    metric_definitions=metrics,
+                    max_wait=100000,
+                    hyperparameters=hyperparameters,
+                   )
 
 # Setup experiment and trial
+experiment_name = 'linear-models'
+description = 'Are linear models > 90% accurate'
 try:
-    experiment = Experiment.create(experiment_name='linear-models', 
-                              description='Are linear models > 90% accurate')
+    experiment = Experiment.create(experiment_name=experiment_name, 
+                              description=description)
 except:
     print("Experiment exists")
+    experiment = Experiment.load(experiment_name=experiment_name)
+    
 
 
-ts = datetime.now().strftime("%Y%m%dT%Hh%Mm")
+trial_name = "vanilla-sgd-trial"
 trial = Trial.create(experiment_name=experiment.experiment_name,
-                    trial_name=f"vanilla-SGD-{ts}")
+                    trial_name=trial_name)
 
 with Tracker.create(display_name='metadata') as tracker:
     tracker.log_parameters({'bucket':bucket, 'metrics':'accuracy'})
