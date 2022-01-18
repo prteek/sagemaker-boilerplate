@@ -1,0 +1,25 @@
+# Working environment
+pip
+jupyterlab
+python-dotenv
+
+# Machine learning
+scikit-learn
+yellowbrick
+
+# Data
+pandas
+fastparquet
+
+# Scientific python
+numpy
+scipy
+
+# Visualization
+matplotlib
+seaborn
+
+# AWS
+boto3
+sagemaker
+sagemaker-experiments
