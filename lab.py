@@ -53,12 +53,16 @@ except:
     
 
 
-trial_name = "vanilla-sgd-trial"
+trial_name = "vanilla-SGD-trial"
 trial = Trial.create(experiment_name=experiment.experiment_name,
                     trial_name=trial_name)
 
-with Tracker.create(display_name='metadata') as tracker:
+with Tracker.create(display_name='metadata', 
+                    artifact_bucket=bucket, 
+                    artifact_prefix='metadata') as tracker:
     tracker.log_parameters({'bucket':bucket, 'metrics':'accuracy'})
+    tracker.log_artifact('Dockerfile', name='dockerfile')
+    tracker.log_artifact('requirements.txt', name='requirements-file')
     
 trial.add_trial_component(tracker.trial_component)
 
