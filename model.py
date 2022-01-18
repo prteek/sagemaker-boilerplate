@@ -7,6 +7,11 @@ import joblib
 from sklearn.metrics import accuracy_score
 
 
+def model_fn(model_dir):
+    """Required model loading for Sagemaker framework"""
+    model = joblib.load(os.path.join(args.model_dir, "model.mdl"))
+    return model
+
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser()
