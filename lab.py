@@ -23,7 +23,7 @@ training_dir = "/".join(i for i in data_dir.split("/")[:-1])
 
 # Configure estimator
 job_name = 'training'
-output_path = f"s3://{bucket}/model/artifacts"
+output_path = f"s3://{bucket}/model/"
 hyperparameters = {'alpha': 0.1}
 
 metrics = [{'Name': 'accuracy', 'Regex': "accuracy=([0-9\\.]+);"}]
@@ -42,8 +42,8 @@ estimator = SKLearn(entry_point='model.py',
                    )
 
 # Setup experiment and trial
-experiment_name = 'linear-models'
-description = 'Are linear models > 90% accurate'
+experiment_name = 'sagemaker-boilerplate'
+description = 'Setup template trials for easy experimentation'
 try:
     experiment = Experiment.create(experiment_name=experiment_name, 
                               description=description)
@@ -53,7 +53,7 @@ except:
     
 
 
-trial_name = "vanilla-SGD-trial"
+trial_name = "check-for-output-location"
 trial = Trial.create(experiment_name=experiment.experiment_name,
                     trial_name=trial_name)
 
