@@ -1,6 +1,4 @@
 # Working environment
-pip
-jupyterlab
 python-dotenv
 
 # Machine learning
