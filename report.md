@@ -20,7 +20,8 @@ Missing values : 0
 ![Data distribution](./resources/data-pairplot.png)
 
 ### Relationship of different variables with target
-```modelled with a RandomForestClassifier```
+```modelled with a RandomForestClassifier```  
+
 ![Feature relationship](./resources/feature-relationship.png)
 
 Observations:
@@ -36,6 +37,7 @@ Observations:
 PCA will help remove the multicollinearity between *Monetary* and *Frequency* variables and it will also help if we decide to use a Logistic Regression model down the line.  
 
 **Relationship between variables after using PCA transformation**
+
 ![PCA transformed relationship](./resources/pca-transformed-relationship.png)
 
 Observations:
@@ -45,6 +47,7 @@ Observations:
 4. This makes sense since the other 2 variables were largely un correlated to Monetary/Frequecy values
 
 **Relationship of decomposed variables with target**
+
 ![Decomposed variables relationship](./resources/decomposed-variables-relationship.png)
 
 Observations:
@@ -57,12 +60,13 @@ Observations:
 1. There is no timeseries like structure in the data
 2. 3rd PC can be modelled as a spline with atleast 8-10 knots or a mixture of exponential and RBF to capture the bump in the middle and a decay overall
 3. 1st and 2nd PC can be modelled with exponential functions or splines with 4-5 knots
-4. Because the variables are not exactly uniformly distributed, knots can be placed at quantiles in data 
+4. Because the variables are not exactly uniformly distributed, knots can be placed at quantiles in data
 5. The variables can be combined using a linear model with a log link to target
 6. To keep track of model performance *log-loss* can be used as scoring metric
 7. At this point we'll ignore the imbalance of classes in target variable
 
 **Using the assumptions above to roughly model the target (starting from decomposed variables)**
+
 ![Linear model with splines](./resources/linear-model-with-splines.png)
 
 Observations:
