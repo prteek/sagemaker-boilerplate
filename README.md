@@ -44,3 +44,8 @@ make create-bucket # This will create an s3 bucket with the name specified as RE
 ### Train a model
 There are many model specific files that can generate ML model by training either locally or in Sagemaker.  
 The helper ```lab.py``` can be used to start training using any model file (model.py, non_linear_model.py)
+
+
+
+### Read the report.md
+There is a small analysis (in progress) that highlights a mothodical approach to modelling and EDA. You can read `report.md` and feel free to drop any feedback you may have.
