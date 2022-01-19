@@ -1,5 +1,7 @@
 # sagemaker-boilerplate
-Data science experiments using Sagemaker
+Data science experiments using Sagemaker  
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/prteek/sagemaker-boilerplate/HEAD)
 
 This repo is an exercise in using both Cloud tools to quickly iterate and prototype on ML problem and well as demonstrating a logical approach to ML problem solving
 
