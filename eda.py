@@ -25,7 +25,7 @@ target = 'whether he/she donated blood in March 2007'
 features = df.columns.difference([target])
 
 ax = sns.pairplot(df.rename({target:'target'}, axis=1), hue='target', height=1.5)
-ax.savefig('resources/data-pairplot.png')
+ax.savefig('resources/data-pairplot.png', bbox_inches='tight')
 
 # Model variable relationship to target using no-parametric estimate 
 X, y = df[features], df[target]
@@ -40,7 +40,7 @@ pdp = PartialDependenceDisplay.from_estimator(estimator, X, features, target=tar
                                         subsample=200,
                                        grid_resolution=20, n_jobs=-1)
 
-pdp.figure_.savefig('resources/feature-relationship.png')
+pdp.figure_.savefig('resources/feature-relationship.png', bbox_inches='tight')
 
 
 # Model PCA versions of variables
@@ -50,7 +50,7 @@ Xt = pca.fit_transform(X)
 dft = pd.DataFrame(np.c_[Xt,y]).rename({Xt.shape[1]:'target'}, axis=1)
 ax = sns.pairplot(dft, hue='target', height=1.5)
 
-ax.savefig('resources/pca_features.png')
+ax.savefig('resources/pca_features.png', bbox_inches='tight')
 
 estimator = make_pipeline(pca, RandomForestClassifier())
 estimator.fit(X,y)
@@ -62,7 +62,7 @@ pdp = PartialDependenceDisplay.from_estimator(estimator, X, features, target=tar
                                         subsample=200,
                                        grid_resolution=20, n_jobs=-1)
 
-pdp.figure_.savefig('resources/pca-transformed-relationship.png')
+pdp.figure_.savefig('resources/pca-transformed-relationship.png', bbox_inches='tight')
 
 estimator = RandomForestClassifier()
 estimator.fit(Xt,y)
@@ -73,7 +73,7 @@ pdp = PartialDependenceDisplay.from_estimator(estimator, Xt, range(Xt.shape[1]),
                                         subsample=200,
                                        grid_resolution=20, n_jobs=-1)
 
-pdp.figure_.savefig('resources/decomposed-variables-relationship.png')
+pdp.figure_.savefig('resources/decomposed-variables-relationship.png', bbox_inches='tight')
 
 # Modelling features as splines and using logistic model
 estimator = make_pipeline(SplineTransformer(n_knots=10,knots='quantile', extrapolation='linear'), 
@@ -92,4 +92,4 @@ pdp = PartialDependenceDisplay.from_estimator(estimator, Xt, range(Xt.shape[1]),
                                         subsample=200,
                                        grid_resolution=20, n_jobs=-1)
 
-pdp.figure_.savefig('resources/linear-model-with-splines.png')
+pdp.figure_.savefig('resources/linear-model-with-splines.png', bbox_inches='tight')
