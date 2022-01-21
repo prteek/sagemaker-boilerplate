@@ -53,7 +53,7 @@ except:
     
 
 
-trial_name = "check-for-output-location"
+trial_name = "base-python-env"
 trial = Trial.create(experiment_name=experiment.experiment_name,
                     trial_name=trial_name)
 
