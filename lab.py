@@ -62,7 +62,7 @@ with Tracker.create(display_name='metadata',
                     artifact_prefix='metadata') as tracker:
     tracker.log_parameters({'bucket':bucket, 'metrics':'accuracy'})
     tracker.log_artifact('Dockerfile', name='dockerfile')
-    tracker.log_artifact('requirements.txt', name='requirements-file')
+    tracker.log_artifact('environment.yml', name='conda-environment-file')
     
 trial.add_trial_component(tracker.trial_component)
 
